@@ -9,6 +9,9 @@ const config = {
   channelSecret: "9bde799235c2d35f65f38b70d76a90a3",
 };
 
+// base URL for webhook server
+let baseURL = "base_url";
+
 // create LINE SDK client
 const client = new line.Client(config);
 
