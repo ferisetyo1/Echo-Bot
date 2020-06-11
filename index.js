@@ -96,7 +96,7 @@ function handleEvent(event) {
 function handleText(message, replyToken, source) {
   const buttonsImageURL = `${baseURL}/static/buttons/1040.jpg`;
 
-  switch (message.text) {
+  switch (message.text.toLowerCase()) {
     case 'profile':
       if (source.userId) {
         return client.getProfile(source.userId)
