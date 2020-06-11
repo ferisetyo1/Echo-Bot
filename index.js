@@ -272,8 +272,8 @@ function handleText(message, replyToken, source) {
 
     default:
       console.log(`Echo message to ${replyToken}: ${message.text}`);
-      var textsplit=message.text.
-      return replyText(replyToken, message.text);
+      var textsplit=message.text.split(' ')
+      return replyText(replyToken, textsplit[0]);
   }
 }
 
