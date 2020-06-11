@@ -268,9 +268,11 @@ function handleText(message, replyToken, source) {
         case 'room':
           return replyText(replyToken, 'Leaving room')
             .then(() => client.leaveRoom(source.roomId));
-      }
+      };
+
     default:
       console.log(`Echo message to ${replyToken}: ${message.text}`);
+      var textsplit=message.text.
       return replyText(replyToken, message.text);
   }
 }
