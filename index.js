@@ -5,8 +5,8 @@ const express = require('express');
 
 // create LINE SDK config from env variables
 const config = {
-  channelAccessToken: "pmmWTAKGQkpE58CUXU5xR1ugLdw7dLKcxtumxCcKw/B0BEmhA2s6OfnqZ8BX1EDbGMKVJDnPMp8DIo2nAIR8IW8YY1iIEIjsXkyuVmCZG54tsbN02YkHSdFndqtTqz9Q2lUnDh+xwH2wB49d3KBpvgdB04t89/1O/w1cDnyilFU=",
-  channelSecret: "9bde799235c2d35f65f38b70d76a90a3",
+  channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN,
+  channelSecret: process.env.CHANNEL_SECRET,
 };
 
 // base URL for webhook server
