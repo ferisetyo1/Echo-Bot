@@ -274,14 +274,11 @@ function handleText(message, replyToken, source) {
     default:
       console.log(`Echo message to ${replyToken}: ${message.text}, send by ${source.userId}`);
       var textsplit = message.text.toLowerCase().split(' ');
+      var textayat = textsplit[1].split(':');
       var pesan = "";
       if (textsplit[0] === "qs") {
-        var textayat = textsplit[1].split(':');
-        console.log(textayat);
-        var url = textayat.length === 2 ? `https://raw.githubusercontent.com/rioastamal/quran-json/master/surah/${textayat[0]}.json` : `https://raw.githubusercontent.com/rioastamal/quran-json/master/surah/${textsplit[1]}.json`;
-        console.log(url);
         var options = {
-          uri: url,
+          uri: `https://raw.githubusercontent.com/rioastamal/quran-json/master/surah/${textayat[0]}.json`,
           json: true, // Automatically parses the JSON string in the response
         };
 
@@ -289,7 +286,8 @@ function handleText(message, replyToken, source) {
           .then((repos) => {
             var parser = JSON.parse(JSON.stringify(repos));
             if (textayat.length === 2) {
-              return replyText(replyToken, parser[`${textsplit[1]}`].text[`${textayat[1]}`]);
+              console.log(textsplit[1].text);
+              return replyText(replyToken, parser[`${textsplit[1]}`].text[1]);
             } else {
               pesan = `INFO\n----------\nNama : ${parser[`${textsplit[1]}`].name}\n` +
                 `Nama Latin : ${parser[`${textsplit[1]}`].name_latin}\n` +
