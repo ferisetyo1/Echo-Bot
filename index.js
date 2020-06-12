@@ -293,7 +293,7 @@ function handleText(message, replyToken, source) {
               `Jumlah Ayat : ${parser[`${textayat[0]}`].number_of_ayah}`;
             console.log(`panjang : ${textayat.length}`);
             var startend = textayat[1].split('-');
-            pesan += textayat.length === 2 && startend.length === 1 ? `\nAyat ${textayat[1]} : \n${parser[`${textayat[0]}`].text[`${textayat[1]}`]}\nTerjemahan ayat ${textayat[1]} : \n${parser[`${textayat[0]}`].translations.id.text[`${textayat[1]}`]}` : "";
+            pesan += textayat.length === 2 ? `\nAyat ${textayat[1]} : \n${parser[`${textayat[0]}`].text[`${textayat[1]}`]}\nTerjemahan ayat ${textayat[1]} : \n${parser[`${textayat[0]}`].translations.id.text[`${textayat[1]}`]}` : "";
             pesan += textayat > 2 ? "\nAyat dipilih :" : "";
             for (var i = startend[0].parseInt(); i <= startend[1].parseInt(); i++) {
               pesan += `\nAyat ${i}`;
