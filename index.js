@@ -291,7 +291,7 @@ function handleText(message, replyToken, source) {
             pesan = `INFO\n----------\nNama : ${parser[`${textayat[0].toString()}`].name}\n` +
               `Nama Latin : ${parser[`${textayat[0]}`].name_latin}\n` +
               `Jumlah Ayat : ${parser[`${textayat[0]}`].number_of_ayah}`;
-            console.log(`panjang : ${textayat.length}`)
+            console.log(`panjang : ${textayat.length}`);
             var startend = textayat[1].split('-');
             pesan += textayat.length === 2 && startend.length === 1 ? `\nAyat ${textayat[1]} : \n${parser[`${textayat[0]}`].text[`${textayat[1]}`]}\nTerjemahan ayat ${textayat[1]} : \n${parser[`${textayat[0]}`].translations.id.text[`${textayat[1]}`]}` : "";
             pesan += textayat > 2 ? "\nAyat dipilih :" : "";
