@@ -292,6 +292,7 @@ function handleText(message, replyToken, source) {
           })
           .catch(function (err) {
             console.log(err.message);
+            return replyText(replyToken, "Ya mana ada lur, yang bener aja");
           });
       } else {
         message = message.text
