@@ -299,7 +299,7 @@ function handleText(message, replyToken, source) {
           .then((profile) =>{
             pesan = `Hai jg sayangku, ${profile.displayName}`
             return replyText(replyToken, pesan);
-          });
+          }).catch((err)=>console.log(`error ${err.message}`));
         }else{
           pesan = "gak usah sok kenal";
           return replyText(replyToken, pesan);
