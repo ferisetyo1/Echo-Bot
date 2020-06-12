@@ -290,11 +290,8 @@ function handleText(message, replyToken, source) {
             pesan = `INFO\n----------\nNama : ${parser[`${textsplit[1]}`].name}\n` +
               `Nama Latin : ${parser[`${textsplit[1]}`].name_latin}\n` +
               `Jumlah Ayat : ${parser[`${textsplit[1]}`].number_of_ayah}`;
-            if (textayat.length === 2) {
-              pesan += `\nAyat dipilih : ${parser[`${textsplit[1]}`].text[`${textayat[1]}`]}`;
-            } else {
-              return replyText(replyToken, pesan);
-            }
+            pesan += textayat.length === 2 ? `\nAyat dipilih : ${parser[`${textsplit[1]}`].text[`${textayat[1]}`]}` : "";
+            return replyText(replyToken, pesan);
           })
           .catch(function (err) {
             console.log(err.message);
@@ -317,7 +314,7 @@ function handleText(message, replyToken, source) {
         return replyText(replyToken, pesan);
       }
 
-      // return replyText(replyToken, pesan);
+    // return replyText(replyToken, pesan);
   }
 }
 
