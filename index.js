@@ -292,6 +292,7 @@ function handleText(message, replyToken, source) {
             } else {
               pesan = `INFO\n----------\nNama : ${parser[`${textsplit[1]}`].name}\n` +
                 `Nama Latin : ${parser[`${textsplit[1]}`].name_latin}\n` +
+                `Nama Latin : ${parser[`${textsplit[1]}`].text[`1`]}\n` +
                 `Jumlah Ayat : ${parser[`${textsplit[1]}`].number_of_ayah}`;
               return replyText(replyToken, pesan);
             }
