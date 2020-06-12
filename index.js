@@ -286,7 +286,7 @@ function handleText(message, replyToken, source) {
           .then((repos) => {
             var parser = JSON.parse(JSON.stringify(repos));
             if (textayat.length === 2) {
-              console.log(parser[`${textsplit[1]}`].text);
+              console.log(parser[`${textsplit[1]}`].name);
               return replyText(replyToken, parser[`${textsplit[1]}`].text[1]);
             } else {
               pesan = `INFO\n----------\nNama : ${parser[`${textsplit[1]}`].name}\n` +
