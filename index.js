@@ -292,7 +292,7 @@ function handleText(message, replyToken, source) {
               `Nama Latin : ${parser[`${textayat[0]}`].name_latin}\n` +
               `Jumlah Ayat : ${parser[`${textayat[0]}`].number_of_ayah}`;
             console.log(`panjang : ${textayat.length}`)
-            pesan += textayat.length === 2 ? `\nAyat dipilih : ${parser[`${textayat[0]}`].text[`${textayat[1]}`]}` : "";
+            pesan += textayat.length === 2 ? `\nAyat ${textayat[1]} : \n${parser[`${textayat[0]}`].text[`${textayat[1]}`]}\nTerjemahan ayat ${textayat[1]} : ${parser[`${textayat[0]}`].translations.id.text[`${textayat[1]}`]}` : "";
             return replyText(replyToken, pesan);
           })
           .catch(function (err) {
