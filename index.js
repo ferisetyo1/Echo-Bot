@@ -275,7 +275,7 @@ function handleText(message, replyToken, source) {
     default:
       console.log(`Echo message to ${replyToken}: ${message.text}`);
       var textsplit = message.text.toLowerCase().split(' ');
-      var message = "";
+      var pesan = "";
       if (textsplit[0] === "surah") {
         var options = {
           uri: `https://raw.githubusercontent.com/rioastamal/quran-json/master/surah/${textsplit[1]}.json`,
@@ -285,20 +285,20 @@ function handleText(message, replyToken, source) {
         rp.get(options)
           .then((repos) => {
             var parser = JSON.parse(JSON.stringify(repos));
-            message = `INFO\n----------\nNama : ${parser[`${textsplit[1]}`].name}\n`+
+            pesan = `INFO\n----------\nNama : ${parser[`${textsplit[1]}`].name}\n`+
             `Nama Latin : ${parser[`${textsplit[1]}`].name_latin}\n`+
             `Jumlah Ayat : ${parser[`${textsplit[1]}`].number_of_ayah}`
-            return replyText(replyToken, message);
+            return replyText(replyToken, pesan);
           })
           .catch(function (err) {
             console.log(err.message);
             return replyText(replyToken, "Ya mana ada lur, yang bener aja");
           });
       } else {
-        message = message.text
+        pesan = message.text
       }
 
-      return replyText(replyToken, message);
+      return replyText(replyToken, pesan);
   }
 }
 
