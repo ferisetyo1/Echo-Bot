@@ -286,8 +286,9 @@ function handleText(message, replyToken, source) {
           .then((repos) => {
             var parser = JSON.parse(JSON.stringify(repos));
             if (textayat.length === 2) {
-              console.log(parser[`${textsplit[1]}`].name);
-              return replyText(replyToken, parser[`${textsplit[1]}`].text[1]);
+              // console.log(parser[`${textsplit[1]}`].name);
+              pesan = `QS ${textsplit[2]} :\n ${parser[`${textsplit[1]}`].text[`1`]}\n${parser[`${textsplit[1]}`].translations.id.text[`1`]}`
+              return replyText(replyToken, pesan);
             } else {
               pesan = `INFO\n----------\nNama : ${parser[`${textsplit[1]}`].name}\n` +
                 `Nama Latin : ${parser[`${textsplit[1]}`].name_latin}\n` +
