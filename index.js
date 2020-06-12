@@ -4,6 +4,7 @@ const line = require('@line/bot-sdk');
 const express = require('express');
 const rp = require('request-promise');
 const { json } = require('body-parser');
+const { Client } = require('_debugger');
 
 // create LINE SDK config from env variables
 const config = {
@@ -273,7 +274,7 @@ function handleText(message, replyToken, source) {
       };
 
     default:
-      console.log(`Echo message to ${replyToken}: ${message.text}, send by ${message.sender.name}`);
+      console.log(`Echo message to ${replyToken}: ${message.text}, send by ${source.userId}`);
       var textsplit = message.text.toLowerCase().split(' ');
       var pesan = "";
       if (textsplit[0] === "surah") {
@@ -295,7 +296,14 @@ function handleText(message, replyToken, source) {
             return replyText(replyToken, "Ya mana ada lur, yang bener aja");
           });
       } else if(textsplit[0]==="hai") {
-        pesan = "gak usah sok kenal"
+        if(source.userId===process.env.USERID_KU){
+          client.getProfile(source.userId)
+          .then((profile) =>{
+            pesan = `Hai jg sayangku, ${profile.displayName}`
+          });
+        }else{
+          pesan = "gak usah sok kenal";
+        }
         return replyText(replyToken, pesan);
       } else {
         pesan = message.text
