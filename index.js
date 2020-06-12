@@ -277,6 +277,7 @@ function handleText(message, replyToken, source) {
       var pesan = "";
       if (textsplit[0] === "qs") {
         var textayat = textsplit[1].split(':');
+        console.log(textayat);
         var url = textayat.length === 2 ? `https://raw.githubusercontent.com/rioastamal/quran-json/master/surah/${textayat[0]}.json` : `https://raw.githubusercontent.com/rioastamal/quran-json/master/surah/${textsplit[1]}.json`;
         var options = {
           uri: url,
