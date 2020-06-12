@@ -288,10 +288,10 @@ function handleText(message, replyToken, source) {
           .then((repos) => {
             var parser = JSON.parse(JSON.stringify(repos));
             pesan = `INFO\n----------\nNama : ${parser[`${textsplit[1]}`].name}\n` +
-              `Nama Latin : ${parser[`${textsplit[1]}`].name_latin}\n` +
-              `Jumlah Ayat : ${parser[`${textsplit[1]}`].number_of_ayah}`;
+              `Nama Latin : ${parser[`${textayat[0]}`].name_latin}\n` +
+              `Jumlah Ayat : ${parser[`${textayat[0]}`].number_of_ayah}`;
             console.log(textsplit[1]);
-            pesan += textayat.length === 2 ? `\nAyat dipilih : ${parser[`${textsplit[1]}`].text[`${textayat[1]}`]}` : "";
+            pesan += textayat.length === 2 ? `\nAyat dipilih : ${parser[`${textayat[0]}`].text[`${textayat[1]}`]}` : "";
             return replyText(replyToken, pesan);
           })
           .catch(function (err) {
