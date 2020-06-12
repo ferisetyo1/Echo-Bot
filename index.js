@@ -286,11 +286,12 @@ function handleText(message, replyToken, source) {
 
         rp.get(options)
           .then((repos) => {
+            console.log(repos.toString());
             var parser = JSON.parse(JSON.stringify(repos));
-            pesan = `INFO\n----------\nNama : ${parser[`${textsplit[1]}`].name}\n` +
+            pesan = `INFO\n----------\nNama : ${parser[`${textayat[0]}`].name}\n` +
               `Nama Latin : ${parser[`${textayat[0]}`].name_latin}\n` +
               `Jumlah Ayat : ${parser[`${textayat[0]}`].number_of_ayah}`;
-            console.log(textsplit[1]);
+            console.log(`panjang : ${textayat.length}`)
             pesan += textayat.length === 2 ? `\nAyat dipilih : ${parser[`${textayat[0]}`].text[`${textayat[1]}`]}` : "";
             return replyText(replyToken, pesan);
           })
