@@ -11,7 +11,7 @@ const config = {
 };
 
 // base URL for webhook server
-let baseURL = "base_url";
+let baseURL = process.env.BASE_URL;
 
 // create LINE SDK client
 const client = new line.Client(config);
