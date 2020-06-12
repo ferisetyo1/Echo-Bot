@@ -2,6 +2,8 @@
 
 const line = require('@line/bot-sdk');
 const express = require('express');
+const rp = require('request-promise');
+const { json } = require('body-parser');
 
 // create LINE SDK config from env variables
 const config = {
@@ -272,10 +274,47 @@ function handleText(message, replyToken, source) {
 
     default:
       console.log(`Echo message to ${replyToken}: ${message.text}`);
-      var textsplit=message.text.split(' ')
-      return replyText(replyToken, textsplit[0]);
+      var textsplit = message.text.toLowerCase().split(' ');
+      var message = "";
+      if (textsplit[0] === "quran") {
+        var options = {
+          uri: 'https://raw.githubusercontent.com/rioastamal/quran-json/master/surah/1.json',
+          json: true, // Automatically parses the JSON string in the response
+        };
+
+        rp.get(options)
+          .then((repos) => {
+            var parser = JSON.parse(JSON.stringify(repos));
+            message = parser["1"].name
+            return replyText(replyToken, message);
+          })
+          .catch(function (err) {
+            console.log(err.message);
+          });
+      } else {
+        message = message.text
+      }
+
+      return replyText(replyToken, message);
   }
 }
+
+// app.get('/quran', (req, res) => {
+//   var options = {
+//     uri: 'https://raw.githubusercontent.com/rioastamal/quran-json/master/surah/1.json',
+//     json: true, // Automatically parses the JSON string in the response
+//   };
+
+//   rp.get(options)
+//     .then((repos) => {
+//       var parser = JSON.parse(JSON.stringify(repos));
+//       res.send(parser["1"].name)
+//     })
+//     .catch(function (err) {
+//       console.log(err.message);
+//     });
+// });
+
 
 // listen on port
 const port = process.env.PORT || 3000;
