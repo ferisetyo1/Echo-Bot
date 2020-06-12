@@ -274,10 +274,10 @@ function handleText(message, replyToken, source) {
     default:
       console.log(`Echo message to ${replyToken}: ${message.text}, send by ${source.userId}`);
       var textsplit = message.text.toLowerCase().split(' ');
-      var textayat = textsplit[1].split(':');
-      // var startend = textayat[1].split('-');
       var pesan = "";
       if (textsplit[0] === "qs") {
+        var textayat = textsplit[1].split(':');
+      // var startend = textayat[1].split('-');
         var options = {
           uri: `https://raw.githubusercontent.com/rioastamal/quran-json/master/surah/${textayat[0]}.json`,
           json: true, // Automatically parses the JSON string in the response
