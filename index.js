@@ -288,7 +288,7 @@ function handleText(message, replyToken, source) {
           .then((repos) => {
             console.log(repos.toString());
             var parser = JSON.parse(JSON.stringify(repos));
-            pesan = `INFO\n----------\nNama : ${parser[`${textayat[0]}`].name}\n` +
+            pesan = `INFO\n----------\nNama : ${parser[`${textayat[0].toString()}`].name}\n` +
               `Nama Latin : ${parser[`${textayat[0]}`].name_latin}\n` +
               `Jumlah Ayat : ${parser[`${textayat[0]}`].number_of_ayah}`;
             console.log(`panjang : ${textayat.length}`)
