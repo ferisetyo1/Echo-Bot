@@ -3,8 +3,6 @@
 const line = require('@line/bot-sdk');
 const express = require('express');
 const rp = require('request-promise');
-const { json } = require('body-parser');
-const { Client } = require('_debugger');
 
 // create LINE SDK config from env variables
 const config = {
@@ -288,7 +286,7 @@ function handleText(message, replyToken, source) {
             var parser = JSON.parse(JSON.stringify(repos));
             pesan = `INFO\n----------\nNama : ${parser[`${textsplit[1]}`].name}\n`+
             `Nama Latin : ${parser[`${textsplit[1]}`].name_latin}\n`+
-            `Jumlah Ayat : ${parser[`${textsplit[1]}`].number_of_ayah}`
+            `Jumlah Ayat : ${parser[`${textsplit[1]}`].number_of_ayah}`;
             return replyText(replyToken, pesan);
           })
           .catch(function (err) {
