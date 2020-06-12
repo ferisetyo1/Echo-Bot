@@ -276,16 +276,18 @@ function handleText(message, replyToken, source) {
       console.log(`Echo message to ${replyToken}: ${message.text}`);
       var textsplit = message.text.toLowerCase().split(' ');
       var message = "";
-      if (textsplit[0] === "quran") {
+      if (textsplit[0] === "surah") {
         var options = {
-          uri: 'https://raw.githubusercontent.com/rioastamal/quran-json/master/surah/1.json',
+          uri: `https://raw.githubusercontent.com/rioastamal/quran-json/master/surah/${textsplit[1]}.json`,
           json: true, // Automatically parses the JSON string in the response
         };
 
         rp.get(options)
           .then((repos) => {
             var parser = JSON.parse(JSON.stringify(repos));
-            message = parser["1"].name
+            message = `INFO\n----------\nNama : ${parser[`${textsplit[1]}`].name}\n`+
+            `Nama Latin : ${parser[`${textsplit[1]}`].name_latin}\n`+
+            `Jumlah Ayat : ${parser[`${textsplit[1]}`].number_of_ayah}`
             return replyText(replyToken, message);
           })
           .catch(function (err) {
