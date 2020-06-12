@@ -282,6 +282,8 @@ function handleText(message, replyToken, source) {
           json: true, // Automatically parses the JSON string in the response
         };
 
+        console.log(options.uri);
+
         rp.get(options)
           .then((repos) => {
             var parser = JSON.parse(JSON.stringify(repos));
@@ -296,6 +298,7 @@ function handleText(message, replyToken, source) {
           })
           .catch(function (err) {
             console.log(err.message);
+            console.log(err.status);
             return replyText(replyToken, "Ya mana ada lur, yang bener aja");
           });
       } else if (textsplit[0] === "hai") {
