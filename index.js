@@ -275,7 +275,7 @@ function handleText(message, replyToken, source) {
       console.log(`Echo message to ${replyToken}: ${message.text}, send by ${source.userId}`);
       var textsplit = message.text.toLowerCase().split(' ');
       var textayat = textsplit[1].split(':');
-      var startend = textayat[1].split('-');
+      // var startend = textayat[1].split('-');
       var pesan = "";
       if (textsplit[0] === "qs") {
         var options = {
@@ -293,13 +293,14 @@ function handleText(message, replyToken, source) {
               `Nama Latin : ${parser[`${textayat[0]}`].name_latin}\n` +
               `Jumlah Ayat : ${parser[`${textayat[0]}`].number_of_ayah}`;
             console.log(`panjang : ${textayat.length}`);
-            pesan += textayat.length === 2 && startend.length === 1 ? `\nAyat ${textayat[1]} : \n${parser[`${textayat[0]}`].text[`${textayat[1]}`]}\nTerjemahan ayat ${textayat[1]} : \n${parser[`${textayat[0]}`].translations.id.text[`${textayat[1]}`]}` : "";
-            pesan += textayat.length > 2 ? "\nAyat dipilih :" : "";
-            for (var i = startend[0].parseInt(); i <= startend[1].parseInt(); i++) {
-              pesan += `\nAyat ${i}`;
-              pesan += `\n${parser[`${textayat[0]}`].text[`${i.toString()}`]}`;
-              pesan += `\n---------`;
-            }
+            // pesan += textayat.length === 2 && startend.length === 1 ? `\nAyat ${textayat[1]} : \n${parser[`${textayat[0]}`].text[`${textayat[1]}`]}\nTerjemahan ayat ${textayat[1]} : \n${parser[`${textayat[0]}`].translations.id.text[`${textayat[1]}`]}` : "";
+            pesan += textayat.length === 2 ? `\nAyat ${textayat[1]} : \n${parser[`${textayat[0]}`].text[`${textayat[1]}`]}\nTerjemahan ayat ${textayat[1]} : \n${parser[`${textayat[0]}`].translations.id.text[`${textayat[1]}`]}` : "";
+            // pesan += textayat.length > 2 ? "\nAyat dipilih :" : "";
+            // for (var i = startend[0].parseInt(); i <= startend[1].parseInt(); i++) {
+            //   pesan += `\nAyat ${i}`;
+            //   pesan += `\n${parser[`${textayat[0]}`].text[`${i.toString()}`]}`;
+            //   pesan += `\n---------`;
+            // }
             return replyText(replyToken, pesan);
           })
           .catch(function (err) {
