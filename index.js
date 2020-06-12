@@ -275,6 +275,7 @@ function handleText(message, replyToken, source) {
       console.log(`Echo message to ${replyToken}: ${message.text}, send by ${source.userId}`);
       var textsplit = message.text.toLowerCase().split(' ');
       var textayat = textsplit[1].split(':');
+      var pesan = "";
       if (textsplit[0] === "qs") {
         var options = {
           uri: `https://raw.githubusercontent.com/rioastamal/quran-json/master/surah/${textayat[0]}.json`,
@@ -284,13 +285,14 @@ function handleText(message, replyToken, source) {
         rp.get(options)
           .then((repos) => {
             var parser = JSON.parse(JSON.stringify(repos));
-            var pesan = `INFO\n----------\nNama : ${parser[`${textsplit[1]}`].name}\n` +
+            pesan = `INFO\n----------\nNama : ${parser[`${textsplit[1]}`].name}\n` +
               `Nama Latin : ${parser[`${textsplit[1]}`].name_latin}\n` +
               `Jumlah Ayat : ${parser[`${textsplit[1]}`].number_of_ayah}`;
-            if(textayat.length===2){
+            if (textayat.length === 2) {
               pesan += `\nAyat dipilih : ${parser[`${textsplit[1]}`].text[`${textayat[1]}`]}`;
+            } else {
+              return replyText(replyToken, pesan);
             }
-            return replyText(replyToken, pesan);
           })
           .catch(function (err) {
             console.log(err.message);
