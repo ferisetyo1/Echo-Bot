@@ -298,11 +298,12 @@ function handleText(message, replyToken, source) {
           client.getProfile(source.userId)
           .then((profile) =>{
             pesan = `Hai jg sayangku, ${profile.displayName}`
+            return replyText(replyToken, pesan);
           });
         }else{
           pesan = "gak usah sok kenal";
+          return replyText(replyToken, pesan);
         }
-        return replyText(replyToken, pesan);
       } else {
         pesan = message.text
         return replyText(replyToken, pesan);
