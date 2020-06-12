@@ -279,6 +279,7 @@ function handleText(message, replyToken, source) {
         var textayat = textsplit[1].split(':');
         console.log(textayat);
         var url = textayat.length === 2 ? `https://raw.githubusercontent.com/rioastamal/quran-json/master/surah/${textayat[0]}.json` : `https://raw.githubusercontent.com/rioastamal/quran-json/master/surah/${textsplit[1]}.json`;
+        console.log(url);
         var options = {
           uri: url,
           json: true, // Automatically parses the JSON string in the response
