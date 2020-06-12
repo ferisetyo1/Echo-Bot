@@ -297,7 +297,7 @@ function handleText(message, replyToken, source) {
         if(source.userId===process.env.USERID_KU){
           client.getProfile(source.userId)
           .then((profile) =>{
-            pesan = `Hai jg sayangku, ${profile.displayName}`
+            pesan = `Hai jg sayangku, @${profile.displayName}`
             return replyText(replyToken, pesan);
           }).catch((err)=>console.log(`error ${err.message}`));
         }else{
