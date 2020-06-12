@@ -273,7 +273,7 @@ function handleText(message, replyToken, source) {
       };
 
     default:
-      console.log(`Echo message to ${replyToken}: ${message.text}`);
+      console.log(`Echo message to ${replyToken}: ${message.text}, send by ${message.sender.name}`);
       var textsplit = message.text.toLowerCase().split(' ');
       var pesan = "";
       if (textsplit[0] === "surah") {
