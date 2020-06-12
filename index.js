@@ -314,7 +314,7 @@ function handleText(message, replyToken, source) {
         return replyText(replyToken, pesan);
       }
 
-      return replyText(replyToken, pesan);
+      // return replyText(replyToken, pesan);
   }
 }
 
