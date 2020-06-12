@@ -285,14 +285,11 @@ function handleText(message, replyToken, source) {
           .then((repos) => {
             var parser = JSON.parse(JSON.stringify(repos));
             var pesan = "";
-            if (textayat.length === 2) {
-              // console.log(parser[`${textsplit[1]}`].name);
-              pesan = `QS ${textsplit[2]} :\n ${parser[`${textsplit[1]}`].text[`1`]}\n${parser[`${textsplit[1]}`].translations.id.text[`1`]}`
-            } else {
-              pesan = `INFO\n----------\nNama : ${parser[`${textsplit[1]}`].name}\n` +
-                `Nama Latin : ${parser[`${textsplit[1]}`].name_latin}\n` +
-                `Nama Latin : ${parser[`${textsplit[1]}`].text[`1`]}\n` +
-                `Jumlah Ayat : ${parser[`${textsplit[1]}`].number_of_ayah}`;
+            pesan = `INFO\n----------\nNama : ${parser[`${textsplit[1]}`].name}\n` +
+              `Nama Latin : ${parser[`${textsplit[1]}`].name_latin}\n` +
+              `Jumlah Ayat : ${parser[`${textsplit[1]}`].number_of_ayah}`;
+            if(textayat.length===2){
+              pesan += `Ayat dipilih : ${parser[`${textsplit[1]}`].text[`${textayat[1]}`]}`;
             }
             return replyText(replyToken, pesan);
           })
