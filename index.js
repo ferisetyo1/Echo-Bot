@@ -302,7 +302,7 @@ function handleText(message, replyToken, source) {
                 pesan += `\nAyat ${i}`;
                 pesan += `\n${repos[`${textayat[0]}`].text[`${i.toString()}`]}`;
                 pesan += `\n\n${repos[`${textayat[0]}`].translations.id.text[`${i.toString()}`]}`;
-                pesan += i < startend[i] ? `\n---------------------------------` : "";
+                pesan += i === startend[i] ? "" : `\n---------------------------------`;
               }
             }
             return replyText(replyToken, pesan);
