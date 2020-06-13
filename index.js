@@ -277,7 +277,7 @@ function handleText(message, replyToken, source) {
       var pesan = "";
       if (textsplit[0] === "qs") {
         var textayat = textsplit[1].split(':');
-      // var startend = textayat[1].split('-');
+        // var startend = textayat[1].split('-');
         var options = {
           uri: `https://raw.githubusercontent.com/rioastamal/quran-json/master/surah/${textayat[0]}.json`,
           json: true, // Automatically parses the JSON string in the response
@@ -287,16 +287,23 @@ function handleText(message, replyToken, source) {
 
         rp.get(options)
           .then((repos) => {
-            console.log(repos.toString());
-            var parser = JSON.parse(JSON.stringify(repos));
             pesan = `INFO\n----------\n` +
-              `Surah : ${parser[`${textayat[0].toString()}`].number}\n` +
-              `Nama : ${parser[`${textayat[0].toString()}`].name}\n` +
-              `Nama Latin : ${parser[`${textayat[0]}`].name_latin}\n` +
-              `Jumlah Ayat : ${parser[`${textayat[0]}`].number_of_ayah}`;
+              `Surah : ${repos[`${textayat[0].toString()}`].number}\n` +
+              `Nama : ${repos[`${textayat[0].toString()}`].name}\n` +
+              `Nama Latin : ${repos[`${textayat[0]}`].name_latin}\n` +
+              `Jumlah Ayat : ${repos[`${textayat[0]}`].number_of_ayah}`;
             console.log(`panjang : ${textayat.length}`);
+            if (textayat.length === 2) {
+              pesan += `\nAyat ${textayat[1]} : \n${repos[`${textayat[0]}`].text[`${textayat[1]}`]}\nTerjemahan ayat ${textayat[1]} : \n${repos[`${textayat[0]}`].translations.id.text[`${textayat[1]}`]}`;
+            } else if (textayat.length > 2) {
+              pesan += "\nAyat dipilih :";
+              for (var i = startend[0].parseInt(); i <= startend[1].parseInt(); i++) {
+                pesan += `\nAyat ${i}`;
+                pesan += `\n${parser[`${textayat[0]}`].text[`${i.toString()}`]}`;
+                pesan += `\n---------`;
+              }
+            }
             // pesan += textayat.length === 2 && startend.length === 1 ? `\nAyat ${textayat[1]} : \n${parser[`${textayat[0]}`].text[`${textayat[1]}`]}\nTerjemahan ayat ${textayat[1]} : \n${parser[`${textayat[0]}`].translations.id.text[`${textayat[1]}`]}` : "";
-            pesan += textayat.length === 2 ? `\nAyat ${textayat[1]} : \n${parser[`${textayat[0]}`].text[`${textayat[1]}`]}\nTerjemahan ayat ${textayat[1]} : \n${parser[`${textayat[0]}`].translations.id.text[`${textayat[1]}`]}` : "";
             // pesan += textayat.length > 2 ? "\nAyat dipilih :" : "";
             // for (var i = startend[0].parseInt(); i <= startend[1].parseInt(); i++) {
             //   pesan += `\nAyat ${i}`;
