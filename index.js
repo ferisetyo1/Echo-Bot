@@ -294,23 +294,17 @@ function handleText(message, replyToken, source) {
               `Jumlah Ayat : ${repos[`${textayat[0]}`].number_of_ayah}`;
             console.log(`panjang : ${textayat.length}`);
             console.log(startend);
-            if (textayat.length === 2 && startend.length<2) {
+            if (textayat.length === 2 && startend.length < 2) {
               pesan += `\nAyat ${textayat[1]} : \n${repos[`${textayat[0]}`].text[`${textayat[1]}`]}\nTerjemahan ayat ${textayat[1]} : \n${repos[`${textayat[0]}`].translations.id.text[`${textayat[1]}`]}`;
             } else if (startend.length === 2) {
               pesan += "\nAyat dipilih :";
               for (var i = startend[0]; i <= startend[1]; i++) {
                 pesan += `\nAyat ${i}`;
                 pesan += `\n${repos[`${textayat[0]}`].text[`${i.toString()}`]}`;
-                pesan += `\n---------`;
+                pesan += `\n\n${textayat[1]} : \n${repos[`${textayat[0]}`].translations.id.text[`${textayat[1]}`]}`;
+                pesan += i < startend[i] ? `\n---------` : "";
               }
             }
-            // pesan += textayat.length === 2 && startend.length === 1 ? `\nAyat ${textayat[1]} : \n${parser[`${textayat[0]}`].text[`${textayat[1]}`]}\nTerjemahan ayat ${textayat[1]} : \n${parser[`${textayat[0]}`].translations.id.text[`${textayat[1]}`]}` : "";
-            // pesan += textayat.length > 2 ? "\nAyat dipilih :" : "";
-            // for (var i = startend[0].parseInt(); i <= startend[1].parseInt(); i++) {
-            //   pesan += `\nAyat ${i}`;
-            //   pesan += `\n${parser[`${textayat[0]}`].text[`${i.toString()}`]}`;
-            //   pesan += `\n---------`;
-            // }
             return replyText(replyToken, pesan);
           })
           .catch(function (err) {
