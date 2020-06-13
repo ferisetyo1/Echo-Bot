@@ -300,7 +300,7 @@ function handleText(message, replyToken, source) {
               pesan += "\nAyat dipilih :";
               for (var i = startend[0]; i <= startend[1]; i++) {
                 pesan += `\nAyat ${i}`;
-                pesan += `\n${parser[`${textayat[0]}`].text[`${i.toString()}`]}`;
+                pesan += `\n${repos[`${textayat[0]}`].text[`${i.toString()}`]}`;
                 pesan += `\n---------`;
               }
             }
@@ -315,7 +315,6 @@ function handleText(message, replyToken, source) {
           })
           .catch(function (err) {
             console.log(err.message);
-            console.log(err.status);
             return replyText(replyToken, "Ya mana ada lur, yang bener aja");
           });
       } else if (textsplit[0] === "hai") {
