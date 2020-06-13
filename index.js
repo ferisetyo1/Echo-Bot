@@ -293,11 +293,12 @@ function handleText(message, replyToken, source) {
               `Nama Latin : ${repos[`${textayat[0]}`].name_latin}\n` +
               `Jumlah Ayat : ${repos[`${textayat[0]}`].number_of_ayah}`;
             console.log(`panjang : ${textayat.length}`);
+            console.log(startend);
             if (textayat.length === 2 && startend.length<2) {
               pesan += `\nAyat ${textayat[1]} : \n${repos[`${textayat[0]}`].text[`${textayat[1]}`]}\nTerjemahan ayat ${textayat[1]} : \n${repos[`${textayat[0]}`].translations.id.text[`${textayat[1]}`]}`;
             } else if (startend.length === 2) {
               pesan += "\nAyat dipilih :";
-              for (var i = startend[0].parseInt(); i <= startend[1].parseInt(); i++) {
+              for (var i = startend[0]; i <= startend[1]; i++) {
                 pesan += `\nAyat ${i}`;
                 pesan += `\n${parser[`${textayat[0]}`].text[`${i.toString()}`]}`;
                 pesan += `\n---------`;
