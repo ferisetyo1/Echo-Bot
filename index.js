@@ -301,8 +301,8 @@ function handleText(message, replyToken, source) {
               for (var i = startend[0]; i <= startend[1]; i++) {
                 pesan += `\nAyat ${i}`;
                 pesan += `\n${repos[`${textayat[0]}`].text[`${i.toString()}`]}`;
-                pesan += `\n\n${textayat[1]} : \n${repos[`${textayat[0]}`].translations.id.text[`${textayat[1]}`]}`;
-                pesan += i < startend[i] ? `\n---------` : "";
+                pesan += `\n\n${textayat[1]} : \n${repos[`${textayat[0]}`].translations.id.text[`${i.toString()}`]}`;
+                pesan += i < startend[i] ? `\n---------------------------------` : "";
               }
             }
             return replyText(replyToken, pesan);
