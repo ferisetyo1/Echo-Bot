@@ -277,7 +277,7 @@ function handleText(message, replyToken, source) {
       var pesan = "";
       if (textsplit[0] === "qs") {
         var textayat = textsplit[1].split(':');
-        var startend = textayat[1].split('-');
+        var startend = textayat.length === 2 ? textayat[1].split('-') : [];
         var options = {
           uri: `https://raw.githubusercontent.com/rioastamal/quran-json/master/surah/${textayat[0]}.json`,
           json: true, // Automatically parses the JSON string in the response
@@ -304,9 +304,9 @@ function handleText(message, replyToken, source) {
                   pesan += `\n${repos[`${textayat[0]}`].text[`${i.toString()}`]}`;
                   pesan += `\n\n${repos[`${textayat[0]}`].translations.id.text[`${i.toString()}`]}`;
                   pesan += i === startend[i] ? "" : `\n---------------------------------`;
-                }else{
-                  pesan+="\nBatas akhir ayat melebihi jumlah ayat😁";
-                  pesan+=`\n---------------------------------`;
+                } else {
+                  pesan += "\nBatas akhir ayat melebihi jumlah ayat😁";
+                  pesan += `\n---------------------------------`;
                   break;
                 }
               }
