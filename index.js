@@ -305,7 +305,7 @@ function handleText(message, replyToken, source) {
                   pesan += `\n\n${repos[`${textayat[0]}`].translations.id.text[`${i.toString()}`]}`;
                   pesan += i === startend[i] ? "" : `\n---------------------------------`;
                 }else{
-                  pesan+="\nAyat tidak diketahui, periksa kembali jumlah ayat surah ini";
+                  pesan+="\nBatas akhir ayat melebihi jumlah ayat😁";
                   pesan+=`\n---------------------------------`;
                   break;
                 }
