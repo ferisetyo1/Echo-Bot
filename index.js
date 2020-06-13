@@ -287,7 +287,7 @@ function handleText(message, replyToken, source) {
 
         rp.get(options)
           .then((repos) => {
-            pesan = `INFO\n----------\n` +
+            pesan = `INFO ${message.text}\n----------\n` +
               `Surah : ${repos[`${textayat[0].toString()}`].number}\n` +
               `Nama : ${repos[`${textayat[0].toString()}`].name}\n` +
               `Nama Latin : ${repos[`${textayat[0]}`].name_latin}\n` +
