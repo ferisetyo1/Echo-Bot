@@ -299,10 +299,12 @@ function handleText(message, replyToken, source) {
             } else if (startend.length === 2) {
               pesan += "\nAyat dipilih :";
               for (var i = startend[0]; i <= startend[1]; i++) {
-                pesan += `\nAyat ${i}`;
-                pesan += `\n${repos[`${textayat[0]}`].text[`${i.toString()}`]}`;
-                pesan += `\n\n${repos[`${textayat[0]}`].translations.id.text[`${i.toString()}`]}`;
-                pesan += i === startend[i] ? "" : `\n---------------------------------`;
+                if (repos[`${textayat[0]}`].number_of_ayah >= i) {
+                  pesan += `\nAyat ${i}`;
+                  pesan += `\n${repos[`${textayat[0]}`].text[`${i.toString()}`]}`;
+                  pesan += `\n\n${repos[`${textayat[0]}`].translations.id.text[`${i.toString()}`]}`;
+                  pesan += i === startend[i] ? "" : `\n---------------------------------`;
+                }
               }
             }
             return replyText(replyToken, pesan);
@@ -323,8 +325,7 @@ function handleText(message, replyToken, source) {
           return replyText(replyToken, pesan);
         }
       } else {
-        pesan = message.text
-        return replyText(replyToken, pesan);
+        return
       }
 
     // return replyText(replyToken, pesan);
