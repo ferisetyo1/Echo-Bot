@@ -301,7 +301,7 @@ function handleText(message, replyToken, source) {
               for (var i = startend[0]; i <= startend[1]; i++) {
                 pesan += `\nAyat ${i}`;
                 pesan += `\n${repos[`${textayat[0]}`].text[`${i.toString()}`]}`;
-                pesan += `\n\n${textayat[1]} : \n${repos[`${textayat[0]}`].translations.id.text[`${i.toString()}`]}`;
+                pesan += `\n\n${repos[`${textayat[0]}`].translations.id.text[`${i.toString()}`]}`;
                 pesan += i < startend[i] ? `\n---------------------------------` : "";
               }
             }
@@ -315,7 +315,7 @@ function handleText(message, replyToken, source) {
         if (source.userId === process.env.USERID_KU) {
           client.getProfile(source.userId)
             .then((profile) => {
-              pesan = `Hai jg sayangku, @${profile.displayName}`
+              pesan = `Hai jg sayangku, ${profile.displayName}`
               return replyText(replyToken, pesan);
             }).catch((err) => console.log(`error ${err.message}`));
         } else {
